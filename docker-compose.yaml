@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+
+  deployer:
+    image: php:7.4-cli
+    environment:
+      APP_ENV: local
+      APP_DEBUG: 'true'
+      APP_KEY: Aiz0ah5phohCheij5kei2Aqu5pa3doash9u
+      APP_LOCALE: en
+      APP_FALLBACK_LOCALE: en
+      PROJECT_PATH: /home/ubuntu/
+      SERVICE_NAME: my_application
+      DOCKER_COMPOSE_FILE_ABS_PATH: /home/ubuntu/config
+    working_dir: /var/www
+    ports:
+      - "7024:9000"
+    volumes:
+      - ./:/var/www
+    command: php -S 0.0.0.0:9000 -t public
